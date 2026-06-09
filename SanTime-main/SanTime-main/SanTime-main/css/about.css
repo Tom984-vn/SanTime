@@ -1,0 +1,348 @@
+/* ============================================
+   SANTIME – About Page Styles (Enhanced)
+   ============================================ */
+
+/* ---- TAM SAM SOM Chart ---- */
+.market-circles-container {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-2xl) 0;
+}
+
+.market-circle {
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+/* Animated gradient ring on market circles */
+.market-circle::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  padding: 2px;
+  background: conic-gradient(from 0deg, transparent 60%, currentColor 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  animation: about-ring-spin 6s linear infinite;
+}
+
+.market-circle:hover::before {
+  opacity: 0.5;
+}
+
+.market-label {
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.market-desc {
+  font-size: var(--text-sm);
+  opacity: 0.8;
+}
+
+.tam {
+  width: 500px;
+  height: 500px;
+  background: rgba(0, 176, 255, 0.05); /* Secondary */
+  border-color: rgba(0, 176, 255, 0.3);
+  padding-top: var(--space-xl);
+  color: var(--secondary);
+  box-shadow: 0 0 60px rgba(0, 176, 255, 0.08), inset 0 0 40px rgba(0, 176, 255, 0.03);
+}
+.tam .market-label { color: var(--secondary); }
+
+.sam {
+  width: 350px;
+  height: 350px;
+  background: rgba(255, 109, 0, 0.1); /* Accent */
+  border-color: rgba(255, 109, 0, 0.4);
+  padding-top: var(--space-xl);
+  margin-top: var(--space-lg);
+  color: var(--accent);
+  box-shadow: 0 0 50px rgba(255, 109, 0, 0.08), inset 0 0 30px rgba(255, 109, 0, 0.04);
+}
+.sam .market-label { color: var(--accent); }
+
+.som {
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 230, 118, 0.15); /* Primary */
+  border-color: rgba(0, 230, 118, 0.5);
+  padding-top: calc(var(--space-xl) + var(--space-md));
+  margin-top: var(--space-lg);
+  box-shadow: 0 0 30px rgba(0, 230, 118, 0.2), 0 0 80px rgba(0, 230, 118, 0.1), inset 0 0 30px rgba(0, 230, 118, 0.06);
+  color: var(--primary);
+  animation: about-som-breathe 4s ease-in-out infinite;
+}
+.som .market-label { color: var(--primary); }
+
+.market-circle:hover {
+  transform: scale(1.05);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.08);
+}
+
+.tam:hover {
+  box-shadow: 0 0 80px rgba(0, 176, 255, 0.2), inset 0 0 60px rgba(0, 176, 255, 0.06);
+  border-color: rgba(0, 176, 255, 0.6);
+}
+
+.sam:hover {
+  box-shadow: 0 0 70px rgba(255, 109, 0, 0.2), inset 0 0 50px rgba(255, 109, 0, 0.06);
+  border-color: rgba(255, 109, 0, 0.6);
+}
+
+.som:hover {
+  box-shadow: 0 0 60px rgba(0, 230, 118, 0.35), 0 0 120px rgba(0, 230, 118, 0.15), inset 0 0 40px rgba(0, 230, 118, 0.08);
+  border-color: rgba(0, 230, 118, 0.8);
+}
+
+/* ---- Business Model Canvas Grid ---- */
+.bmc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.bmc-cell {
+  padding: var(--space-xl);
+  border-left: 3px solid transparent;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+/* Glass hover on BMC cells */
+.bmc-cell:hover {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transform: translateX(4px);
+}
+
+.bmc-cell:nth-child(1) { border-left-color: var(--primary); }
+.bmc-cell:nth-child(2) { border-left-color: var(--secondary); }
+.bmc-cell:nth-child(3) { border-left-color: var(--accent); }
+.bmc-cell:nth-child(4) { border-left-color: var(--warning); }
+.bmc-cell:nth-child(5) { border-left-color: var(--success); }
+
+/* BMC cell hover glow matching border color */
+.bmc-cell:nth-child(1):hover { box-shadow: -4px 0 20px rgba(0, 230, 118, 0.15), 0 4px 16px rgba(0, 0, 0, 0.2); border-left-width: 4px; }
+.bmc-cell:nth-child(2):hover { box-shadow: -4px 0 20px rgba(0, 176, 255, 0.15), 0 4px 16px rgba(0, 0, 0, 0.2); border-left-width: 4px; }
+.bmc-cell:nth-child(3):hover { box-shadow: -4px 0 20px rgba(255, 109, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.2); border-left-width: 4px; }
+.bmc-cell:nth-child(4):hover { box-shadow: -4px 0 20px rgba(255, 214, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.2); border-left-width: 4px; }
+.bmc-cell:nth-child(5):hover { box-shadow: -4px 0 20px rgba(0, 230, 118, 0.15), 0 4px 16px rgba(0, 0, 0, 0.2); border-left-width: 4px; }
+
+/* ---- Roadmap Timeline ---- */
+.roadmap-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Animated gradient connecting line */
+.roadmap-timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(to bottom,
+    var(--primary) 0%,
+    var(--secondary) 40%,
+    var(--border-strong) 60%,
+    var(--border-subtle) 100%);
+  background-size: 100% 200%;
+  animation: about-timeline-flow 4s ease-in-out infinite;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.rm-item {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+.rm-item::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: -8px;
+  background-color: var(--bg-card);
+  border: 4px solid var(--text-tertiary);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+  transition: all var(--transition-base);
+}
+
+.rm-item:hover::after {
+  transform: scale(1.3);
+}
+
+.left { left: 0; }
+.right { left: 50%; }
+.right::after { left: -8px; }
+
+.rm-content {
+  padding: var(--space-lg);
+  position: relative;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.rm-content:hover {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient border on rm-content hover */
+.rm-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 230, 118, 0.3), rgba(0, 176, 255, 0.1), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.rm-content:hover::before {
+  opacity: 1;
+}
+
+/* Glowing current milestone dot */
+.rm-item:nth-child(2)::after {
+  border-color: var(--primary);
+  background-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow), 0 0 30px rgba(0, 230, 118, 0.3), 0 0 60px rgba(0, 230, 118, 0.1);
+  animation: about-dot-pulse 2s ease-in-out infinite;
+}
+.rm-item:nth-child(1)::after { border-color: var(--primary); }
+
+/* ---- Scroll-triggered Animation Classes ---- */
+.about-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.about-fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-fade-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.about-fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about-fade-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.about-fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about-scale-in {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.about-scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays for children */
+.about-stagger > *:nth-child(1) { transition-delay: 0ms; }
+.about-stagger > *:nth-child(2) { transition-delay: 100ms; }
+.about-stagger > *:nth-child(3) { transition-delay: 200ms; }
+.about-stagger > *:nth-child(4) { transition-delay: 300ms; }
+.about-stagger > *:nth-child(5) { transition-delay: 400ms; }
+.about-stagger > *:nth-child(6) { transition-delay: 500ms; }
+
+/* ---- Gradient borders on important sections ---- */
+.about-section-gradient {
+  position: relative;
+}
+
+.about-section-gradient::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+  opacity: 0.4;
+}
+
+/* ---- Keyframe Animations ---- */
+@keyframes about-ring-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes about-som-breathe {
+  0%, 100% { box-shadow: 0 0 30px rgba(0, 230, 118, 0.2), 0 0 80px rgba(0, 230, 118, 0.1), inset 0 0 30px rgba(0, 230, 118, 0.06); }
+  50% { box-shadow: 0 0 50px rgba(0, 230, 118, 0.35), 0 0 100px rgba(0, 230, 118, 0.15), inset 0 0 40px rgba(0, 230, 118, 0.1); }
+}
+
+@keyframes about-timeline-flow {
+  0%, 100% { background-position: 0 0%; }
+  50% { background-position: 0 100%; }
+}
+
+@keyframes about-dot-pulse {
+  0%, 100% { box-shadow: 0 0 10px var(--primary-glow), 0 0 30px rgba(0, 230, 118, 0.3), 0 0 60px rgba(0, 230, 118, 0.1); }
+  50% { box-shadow: 0 0 20px var(--primary-glow), 0 0 50px rgba(0, 230, 118, 0.4), 0 0 80px rgba(0, 230, 118, 0.2); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tam { width: 300px; height: 300px; }
+  .sam { width: 200px; height: 200px; }
+  .som { width: 120px; height: 120px; padding-top: var(--space-md); }
+  .som .market-label, .som .market-desc { font-size: 10px; }
+  
+  .bmc-grid { grid-template-columns: 1fr; }
+  .bmc-cell[style] { grid-column: span 1 !important; }
+  .bmc-cell ul.flex { flex-direction: column; gap: var(--space-xs); }
+  
+  .roadmap-timeline::after { left: 31px; }
+  .rm-item { width: 100%; padding-left: 70px; padding-right: 0px; }
+  .rm-item::after { left: 23px; }
+  .right { left: 0%; }
+}
